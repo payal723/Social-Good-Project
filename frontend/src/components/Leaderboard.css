@@ -1,0 +1,38 @@
+/* src/components/Leaderboard.css */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.leaderboard-table th, .leaderboard-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.leaderboard-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.leaderboard-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.rank {
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+}
+
+.rank-1 { background-color: #FFD700; } /* Gold */
+.rank-2 { background-color: #C0C0C0; } /* Silver */
+.rank-3 { background-color: #CD7F32; } /* Bronze */
+.rank { background-color: #6c757d; }   /* Default */
