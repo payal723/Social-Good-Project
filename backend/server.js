@@ -10,8 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-  app.use(express.static(path.join(__dirname,'frontend', 'build')));
 
+// --- API Routes ---
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/activities', require('./routes/activities'));
+app.use('/api/users', require('./routes/users'));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
@@ -19,14 +22,17 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 
-// --- API Routes ---
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/activities', require('./routes/activities'));
-app.use('/api/users', require('./routes/users'));
+app.use(express.static(path.join(__dirname, 'frontend', 'build')));
+
+
+
+
+
+
 
 const PORT = process.env.PORT || 5000;
-app.get("/*" , (req,res)=> {
-  res.sendFile(path.join(__dirname,'frontend', 'build','index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
