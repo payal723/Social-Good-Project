@@ -25,7 +25,7 @@ app.use('/api/activities', require('./routes/activities'));
 app.use('/api/users', require('./routes/users'));
 
 const PORT = process.env.PORT || 5000;
-app.get("*" , (req,res)=> {
+app.get("/*" , (req,res)=> {
   res.sendFile(path.join(__dirname,'frontend', 'build','index.html'));
 });
 

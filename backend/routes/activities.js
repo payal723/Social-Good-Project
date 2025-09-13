@@ -6,11 +6,11 @@ const mongoose = require('mongoose');
 const Activity = require('../models/activity');
 const User = require('../models/user');
 
-console.log("✅✅✅ Activities Router File is Loaded! ✅✅✅"); // यह लाइन कन्फर्म करेगी कि फाइल लोड हो रही है
+console.log("✅✅✅ Activities Router File is Loaded! ✅✅✅"); 
 
 // --- Get Community Feed ---
 router.get('/community-feed', async (req, res) => {
-    console.log("➡️ GET /community-feed route was hit!"); // यह लाइन कन्फर्म करेगी कि रूट काम कर रहा है
+    console.log("➡️ GET /community-feed route was hit!"); 
     try {
         const recentActivities = await Activity.find()
             .populate('organizer', 'username')
@@ -25,7 +25,7 @@ router.get('/community-feed', async (req, res) => {
 
 // --- Get all actions for a specific user ---
 router.get('/user/:userId', async (req, res) => {
-    console.log(`➡️ GET /user/${req.params.userId} route was hit!`); // यह लाइन कन्फर्म करेगी कि रूट काम कर रहा है
+    console.log(`➡️ GET /user/${req.params.userId} route was hit!`);
     try {
         const userActivities = await Activity.find({ participants: req.params.userId })
             .populate('organizer', 'username')
