@@ -1,11 +1,10 @@
 // backend/routes/auth.js
 const express = require('express');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken'); // यह पहले गलत था, इसे ठीक किया गया है
+const jwt = require('jsonwebtoken'); 
 const User = require('../models/user');
 const router = express.Router();
 
-// --- नया और बेहतर: User Registration (Signup) ---
 router.post('/register', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -23,7 +22,7 @@ router.post('/register', async (req, res) => {
         const newUser = new User({
             username,
             password: hashedPassword,
-            points: 0, // Start with 0 points
+            points: 0, 
             badges: []
         });
 
@@ -36,7 +35,6 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// --- नया और बेहतर: User Login ---
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -57,7 +55,6 @@ router.post('/login', async (req, res) => {
             { expiresIn: '1h' } 
         );
 
-        // 4. Send back user data and the token
         res.status(200).json({
             message: "Login successful",
             userId: user._id,
