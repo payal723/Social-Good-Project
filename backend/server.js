@@ -19,4 +19,8 @@ app.use('/api/activities', require('./routes/activities'));
 app.use('/api/users', require('./routes/users'));
 
 const PORT = process.env.PORT || 5000;
+app.get("/" , (req,res)=> {
+  res.send("Social Good Project Is Now Live...")
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
