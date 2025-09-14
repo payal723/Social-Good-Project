@@ -20,7 +20,6 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-/* ---------- Serve React build ---------- */
 const buildPath = path.join(__dirname, 'frontend', 'build');
 app.use(express.static(buildPath));
 
